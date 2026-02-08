@@ -47,8 +47,10 @@ def api_root(request):
         'workouts': base_url + 'workouts/',
     })
 
+from django.urls import re_path
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', api_root, name='api_root'),
-    path('', include(router.urls)),
+    re_path(r'^api/', include(router.urls)),
 ]
